@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cédric Villani のフィールズ賞業績を学ぶ</title>
+
+    <!-- KaTeX CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- KaTeX JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Cédric Villani のフィールズ賞業績</h1>
+            <p class="subtitle">多角的な視点から学ぶ最適輸送理論とボルツマン方程式</p>
+        </div>
+    </header>
+
+    <nav class="tab-navigation">
+        <div class="container">
+            <button class="tab-btn active" data-tab="theory">数学的視点</button>
+            <button class="tab-btn" data-tab="physics">物理学的視点</button>
+            <button class="tab-btn" data-tab="ml">機械学習的視点</button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- 数学的視点 -->
+        <section id="theory-tab" class="tab-content active">
+            <div class="intro-section">
+                <h2>数学的視点：ボルツマン方程式と最適輸送理論</h2>
+                <p>セドリック・ヴィラーニ氏のフィールズ賞（2010年）受賞は、<strong>ボルツマン方程式</strong>および関連する<strong>非線形偏微分方程式</strong>の解析と、それを<strong>最適輸送理論</strong>と結びつける画期的な研究に対して贈られました。</p>
+            </div>
+
+            <div class="topic-section">
+                <div class="topic-header" data-topic="boltzmann">
+                    <h3>1. ボルツマン方程式と衝突作用素の解析</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="topic-content" id="boltzmann-content">
+                    <p>ヴィラーニ氏の研究の出発点は、気体中の粒子（原子や分子）の振る舞いを記述する<strong>ボルツマン方程式</strong>です。</p>
+
+                    <div class="equation-box">
+                        <p><strong>ボルツマン方程式:</strong></p>
+                        <p>$$\frac{\partial f}{\partial t} + v \cdot \nabla_x f = Q(f, f)$$</p>
+                    </div>
+
+                    <p>気体の各点における粒子の速度分布関数 $f(t, x, v)$ が時間 $t$ と空間 $x$ に伴ってどのように変化するかを記述する方程式です。その最も重要な項が、粒子間の衝突による速度の変化を表す<strong>衝突作用素</strong> $Q(f, f)$ です。</p>
+
+                    <div class="key-point">
+                        <h4>切断のない衝突作用素の解析</h4>
+                        <p>実際の物理現象では、衝突の際には粒子の相対速度がゼロになる角度（<strong>切断</strong>）は存在しません。ヴィラーニ氏は、この<strong>切断のない（非切断型）衝突作用素</strong>を持つボルツマン方程式を厳密に解析しました。これは、既存の数学的な取り扱いを超えて、より現実に近い物理モデルを扱うことを可能にしました。</p>
+                    </div>
+
+                    <div class="quiz-box">
+                        <h4>理解度チェック</h4>
+                        <p class="quiz-question">ボルツマン方程式の衝突作用素 $Q(f, f)$ が記述するものは何ですか？</p>
+                        <div class="quiz-options">
+                            <button class="quiz-option" data-correct="false">粒子の位置の変化</button>
+                            <button class="quiz-option" data-correct="true">粒子間の衝突による速度の変化</button>
+                            <button class="quiz-option" data-correct="false">外力による加速</button>
+                        </div>
+                        <p class="quiz-feedback" style="display: none;"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="topic-section">
+                <div class="topic-header" data-topic="landau">
+                    <h3>2. ランダウ方程式</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="topic-content" id="landau-content">
+                    <p>ボルツマン方程式は、衝突を瞬時のものとして扱いますが、遠方での相互作用（例えばクーロン力）が支配的な<strong>プラズマ</strong>のような系では、多くの小さな角度での衝突（微小衝突）が連続的に起こっていると考えられます。これを記述するのが<strong>ランダウ方程式</strong>です。</p>
+
+                    <div class="equation-box">
+                        <p><strong>ランダウ方程式:</strong></p>
+                        <p>$$\frac{\partial f}{\partial t} + v \cdot \nabla_x f = \nabla_v \cdot \left( A(f) \nabla_v f + B(f) f \right)$$</p>
+                    </div>
+
+                    <p>クーロン相互作用を持つ荷電粒子の系を記述する方程式で、ボルツマン方程式の衝突作用素が、微小な散乱角での衝突の極限として<strong>拡散方程式</strong>のような形に近似されたものです。</p>
+
+                    <div class="key-point">
+                        <p>ヴィラーニ氏は、ボルツマン方程式とランダウ方程式の解析に共通する、粒子の緩和現象の理解を深めました。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="topic-section">
+                <div class="topic-header" data-topic="entropy">
+                    <h3>3. エントロピー増大と準統御性 (Hypocoercivity)</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="topic-content" id="entropy-content">
+                    <p>ボルツマン方程式は、系が時間とともに熱平衡状態（マクスウェル分布）に近づくことを示唆しており、これは<strong>熱力学第二法則</strong>のミクロな表現である<strong>エントロピー増大</strong>の原理と密接に関連しています。</p>
+
+                    <div class="equation-box">
+                        <p><strong>ボルツマンのH関数:</strong></p>
+                        <p>$$H(f) = - \int f \ln f \, dv$$</p>
+                    </div>
+
+                    <div class="key-point">
+                        <h4>準統御性 (Hypocoercivity)</h4>
+                        <p>ヴィラーニ氏の最大の貢献の一つは、ボルツマン方程式の解が平衡状態（定常解）へ<strong>収束する速度</strong>を定量的に示すための新しい概念<strong>「準統御性」</strong>を開発したことです。</p>
+                        <ul>
+                            <li>衝突作用素は速度空間の特定方向にしか緩和させません（<strong>非統御的</strong>）</li>
+                            <li>しかし、移流項 $v \cdot \nabla_x f$ の作用と組み合わせることで、解が空間と速度の全体で平衡へ<strong>指数関数的</strong>に減衰していくことを示しました</li>
+                        </ul>
+                    </div>
+
+                    <div class="interactive-diagram">
+                        <h4>準統御性の概念図</h4>
+                        <div class="diagram-placeholder">
+                            <svg width="100%" height="200" viewBox="0 0 600 200">
+                                <!-- 速度空間 -->
+                                <g>
+                                    <rect x="50" y="20" width="150" height="150" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                                    <text x="125" y="15" text-anchor="middle" font-size="14" fill="#333">速度空間</text>
+                                    <circle cx="125" cy="95" r="30" fill="#ff9800" opacity="0.6"/>
+                                    <text x="125" y="100" text-anchor="middle" font-size="12" fill="#fff">衝突</text>
+                                    <text x="125" y="115" text-anchor="middle" font-size="10" fill="#fff">緩和効果</text>
+                                </g>
+
+                                <!-- 矢印 -->
+                                <g>
+                                    <path d="M 220 95 L 280 95" stroke="#4caf50" stroke-width="3" fill="none"/>
+                                    <polygon points="280,95 270,90 270,100" fill="#4caf50"/>
+                                    <text x="250" y="85" text-anchor="middle" font-size="12" fill="#4caf50">移流項</text>
+                                </g>
+
+                                <!-- 位相空間 -->
+                                <g>
+                                    <rect x="300" y="20" width="150" height="150" fill="#fff3e0" stroke="#f57c00" stroke-width="2"/>
+                                    <text x="375" y="15" text-anchor="middle" font-size="14" fill="#333">位相空間全体</text>
+                                    <circle cx="375" cy="95" r="40" fill="#4caf50" opacity="0.6"/>
+                                    <text x="375" y="95" text-anchor="middle" font-size="12" fill="#fff">全体的な</text>
+                                    <text x="375" y="110" text-anchor="middle" font-size="12" fill="#fff">緩和</text>
+                                </g>
+                            </svg>
+                            <p class="diagram-caption">移流項と衝突作用素の相互作用により、系全体が緩和する</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="topic-section">
+                <div class="topic-header" data-topic="optimal-transport">
+                    <h3>4. 最適輸送問題と曲率</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="topic-content" id="optimal-transport-content">
+                    <p>ヴィラーニ氏は、非線形偏微分方程式の解析に、<strong>最適輸送理論</strong>という全く異なる数学分野の手法を大胆に導入しました。</p>
+
+                    <div class="key-point">
+                        <h4>最適輸送問題とは</h4>
+                        <p>質量分布 $f_0(x)$ の土砂を、最も効率的な方法で別の質量分布 $f_1(x)$ の形に移動させる（輸送する）経路を見つける問題です。この「効率的」さは、輸送にかかるコスト（例えば、移動距離の二乗）の最小化で測られます。</p>
+                    </div>
+
+                    <div class="equation-box">
+                        <p><strong>ワッサースタイン距離 ($W_2$):</strong></p>
+                        <p>この最適輸送コストの平方根は、分布間の<strong>幾何学的距離</strong>と見なすことができます。ヴィラーニ氏は、この距離を用いて、非線形拡散方程式の解の振る舞いを研究しました。</p>
+                    </div>
+
+                    <div class="key-point">
+                        <h4>リーマン幾何学との接続</h4>
+                        <p>彼は、最適輸送コストの関数が持つ<strong>凸性</strong>や、ワッサースタイン空間が持つ<strong>曲率</strong>の概念を応用しました。特に、エントロピーがワッサースタイン空間におけるある種の<strong>測地線凸関数</strong>であることを見出し、これを利用して方程式の解が一意に、かつ安定して平衡状態に収束する仕組みを、<strong>幾何学的</strong>な視点から解明しました。</p>
+                    </div>
+
+                    <div class="interactive-visualization">
+                        <h4>最適輸送の視覚化</h4>
+                        <div class="transport-viz">
+                            <canvas id="transportCanvas" width="600" height="300"></canvas>
+                            <div class="viz-controls">
+                                <button id="animateTransport" class="btn-primary">輸送をアニメーション</button>
+                                <button id="resetTransport" class="btn-secondary">リセット</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="topic-section">
+                <div class="topic-header" data-topic="landau-damping">
+                    <h3>5. ランダウ減衰</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="topic-content" id="landau-damping-content">
+                    <p><strong>ランダウ減衰</strong>は、プラズマ中での波の振動が、粒子との相互作用によって消散していく現象です。</p>
+
+                    <div class="key-point">
+                        <h4>非線形ランダウ減衰の証明</h4>
+                        <p>ヴィラーニ氏は、共同研究者（クレール・ムホ氏）とともに、衝突がない場合でも、方程式の<strong>非線形項</strong>が時間とともに系を平衡状態（マクスウェル分布）に近づけるという<strong>非線形ランダウ減衰</strong>を厳密に数学的に証明しました。</p>
+                        <p>これは、衝突によるエネルギーの散逸がないにもかかわらず、位相混合（粒子の多様な運動）によって見かけ上の散逸が生じることを示しており、数学と物理学の重要な未解決問題を解決したものです。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="summary-section">
+                <h3>まとめ</h3>
+                <p>ヴィラーニ氏の研究は、<strong>ボルツマン方程式の解析</strong>、<strong>準統御性の理論</strong>、そして<strong>最適輸送理論</strong>の三つが深く結びついた、流体力学、統計物理学、幾何学にまたがる広範な業績と言えます。</p>
+            </div>
+        </section>
+
+        <!-- 物理学的視点 -->
+        <section id="physics-tab" class="tab-content">
+            <div class="intro-section">
+                <h2>物理学的視点：非平衡統計物理学への貢献</h2>
+                <p>ヴィラーニ氏の業績は、統計物理学における非平衡現象を記述する<strong>非線形偏微分方程式</strong>の厳密な解析に、<strong>幾何学（最適輸送理論）</strong>という新しい視点を持ち込んだことにあります。</p>
+            </div>
+
+            <div class="topic-section">
+                <div class="topic-header" data-topic="boltzmann-physics">
+                    <h3>1. ボルツマン方程式：非線形性と緩和現象</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="topic-content" id="boltzmann-physics-content">
+                    <p>ボルツマン方程式は、気体の粒子の<strong>1体分布関数</strong> $f(t, x, v)$ のダイナミクスを記述します。</p>
+
+                    <div class="equation-box">
+                        <p>$$\frac{\partial f}{\partial t} + v \cdot \nabla_x f + F \cdot \nabla_v f = Q(f, f)$$</p>
+                    </div>
+
+                    <ul>
+                        <li>左辺は粒子の位相空間における運動（移流 $\nabla_x$、加速 $F$）を表す</li>
+                        <li>右辺の<strong>衝突作用素</strong> $Q(f, f)$ は非線形な積分項であり、粒子間の衝突による速度の変化を記述</li>
+                    </ul>
+
+                    <div class="key-point">
+                        <h4>切断のない衝突作用素の解析（Non-Cutoff Boltzmann Operator）</h4>
+                        <p>ボルツマン方程式の標準的な解析では、積分が発散しないように、散乱角がある一定値 $\theta_0 > 0$ 以下になる衝突を無視する<strong>角運動量切断</strong>が仮定されてきました。</p>
+                        <p>しかし、現実の分子間ポテンシャル（例えば逆 $s$ 乗ポテンシャル、特にクーロン相互作用の $s=4$）では、遠方作用により微小な散乱角での衝突が支配的となり、切断はできません。</p>
+                        <p>ヴィラーニ氏の貢献は、この<strong>切断のない作用素</strong> $Q(f, f)$ の特性を厳密に分析した点にあります。彼は、特定のポテンシャルのもとで $Q(f, f)$ が持つ<strong>双線形性</strong>と<strong>楕円型</strong>のような性質を数学的に示し、その緩和（散逸）効果を定量化する手法を開発しました。</p>
+                    </div>
+
+                    <div class="physics-example">
+                        <h4>物理的応用例</h4>
+                        <div class="example-grid">
+                            <div class="example-card">
+                                <h5>希薄気体</h5>
+                                <p>大気上層部の気体分子の振る舞い</p>
+                            </div>
+                            <div class="example-card">
+                                <h5>プラズマ</h5>
+                                <p>荷電粒子のクーロン相互作用</p>
+                            </div>
+                            <div class="example-card">
+                                <h5>中性子輸送</h5>
+                                <p>原子炉内の中性子の散乱</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="topic-section">
+                <div class="topic-header" data-topic="landau-physics">
+                    <h3>2. ランダウ方程式と近似構造</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="topic-content" id="landau-physics-content">
+                    <p><strong>ランダウ方程式</strong>は、ボルツマン方程式において衝突が微小散乱角に集中する極限（$|v-v_*| \to 0$）をとることで導出されます。</p>
+
+                    <div class="key-point">
+                        <h4>ボルツマンからランダウへ</h4>
+                        <p>この極限操作により、非線形な積分作用素 $Q(f, f)$ は、速度空間における非線形な<strong>拡散型偏微分作用素</strong>に近似されます。これは、微小な衝突が粒子の速度を連続的に変化させる<strong>ブラウン運動</strong>のような効果を持つためです。</p>
+                        <p>ヴィラーニ氏は、このランダウ方程式の解析にもボルツマン方程式と同様の<strong>関数解析的手法</strong>を適用し、解の存在、一意性、および平衡状態への収束を研究しました。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="topic-section">
+                <div class="topic-header" data-topic="hypocoercivity">
+                    <h3>3. エントロピー増大と準統御性 (Hypocoercivity)</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="topic-content" id="hypocoercivity-content">
+                    <p>熱力学第二法則に基づき、孤立系のボルツマン方程式の解は、<strong>マクスウェル分布</strong>という唯一の平衡状態 $f_{eq}$ に収束します。この収束を保証するのが<strong>エントロピー増大</strong>です。</p>
+
+                    <div class="equation-box">
+                        <p><strong>エントロピーの減衰速度:</strong></p>
+                        <p>系の非平衡度を表す $H$ 関数（ボルツマンのエントロピーの負の量）</p>
+                        <p>$$H(f) = \int f \ln f \, dv$$</p>
+                        <p>は時間に対して単調減少します。</p>
+                    </div>
+
+                    <div class="key-point">
+                        <h4>準統御性 (Hypocoercivity)</h4>
+                        <p>マクスウェル分布への収束速度を数学的に示すために、ヴィラーニ氏は<strong>準統御性</strong>という概念を確立しました。</p>
+                        <ol>
+                            <li>衝突作用素 $Q$ は、速度空間においては緩和効果（減衰）を持ちますが、空間座標 $x$ と一部の速度方向には直接的な減衰効果がありません（<strong>非統御的</strong>）。</li>
+                            <li>しかし、系全体では、<strong>移流項</strong> $v \cdot \nabla_x f$ が速度と空間の結合を通じて、「非統御的な」方向のエネルギーを「統御的な」方向（衝突による散逸が働く方向）に「流し込み」、最終的に全体を散逸させます。</li>
+                        </ol>
+                        <p>ヴィラーニ氏は、適切な<strong>幾何学的計量</strong>を導入し、この移流と衝突の相互作用を定量的に捉えることで、非平衡解が平衡解に<strong>指数関数的</strong>に収束することを厳密に証明しました。</p>
+                    </div>
+
+                    <div class="interactive-plot">
+                        <h4>エントロピー減衰のシミュレーション</h4>
+                        <canvas id="entropyPlot" width="600" height="300"></canvas>
+                        <div class="viz-controls">
+                            <label>衝突頻度: <input type="range" id="collisionRate" min="0.1" max="2" step="0.1" value="1"></label>
+                            <button id="startEntropy" class="btn-primary">シミュレーション開始</button>
+                            <button id="resetEntropy" class="btn-secondary">リセット</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="topic-section">
+                <div class="topic-header" data-topic="ot-physics">
+                    <h3>4. 最適輸送問題と曲率：幾何学的アプローチ</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="topic-content" id="ot-physics-content">
+                    <p>ヴィラーニ氏の最も革新的な側面は、非線形偏微分方程式の解析に<strong>最適輸送理論</strong>（Optimal Transport, OT）を導入したことです。</p>
+
+                    <div class="key-point">
+                        <h4>ワッサースタイン距離 ($W_2$ Distance)</h4>
+                        <p>分布 $f_0$ から $f_1$ への輸送コストを距離として定義したものが、<strong>ワッサースタイン距離</strong> $W_2(f_0, f_1)$ です。これは、統計物理学の分布空間を<strong>リーマン多様体</strong>（ワッサースタイン空間）として見なすことを可能にします。</p>
+                    </div>
+
+                    <div class="equation-box">
+                        <p><strong>輸送方程式と勾配流:</strong></p>
+                        <p>特定の非線形拡散方程式（例えばフォッカー・プランク方程式）は、このワッサースタイン空間におけるエントロピーや自由エネルギー関数の<strong>勾配流</strong>として解釈できます。</p>
+                        <p>$$\frac{\partial f}{\partial t} = \nabla \cdot (f \nabla (\frac{\delta E}{\delta f})) \quad \iff \quad \frac{\partial f}{\partial t} = - \mathrm{grad}_{W_2} E(f)$$</p>
+                    </div>
+
+                    <div class="key-point">
+                        <h4>$CD(\rho, K)$ 条件とリッチ曲率</h4>
+                        <p>ヴィラーニ氏は、エントロピーの<strong>凸性</strong>と、ワッサースタイン空間が持つ<strong>リッチ曲率</strong>の概念を結びつけました。リッチ曲率が下に有界であるという幾何学的な条件 $CD(\rho, K)$ は、ワッサースタイン空間における測地線の収縮率を制限し、その結果としてエントロピーの減衰率を保証します。</p>
+                        <p>このアプローチにより、彼は様々な非線形拡散過程の<strong>収束速度</strong>を、幾何学的かつ統一的な方法で示しました。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="topic-section">
+                <div class="topic-header" data-topic="nonlinear-landau">
+                    <h3>5. 非線形ランダウ減衰（Non-Linear Landau Damping）</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="topic-content" id="nonlinear-landau-content">
+                    <p>これは、衝突項 $Q(f, f)=0$ とした<strong>非衝突ボルツマン方程式</strong>（プラズマの場合はVlasov-Poisson方程式）における現象です。</p>
+
+                    <div class="key-point">
+                        <h4>現象の本質</h4>
+                        <p>プラズマ中の電場による波の振動が、共鳴する粒子の運動（トラッピング）によってエネルギーを失い、波が減衰する現象。これは衝突による真の散逸ではなく、粒子の位相空間における<strong>混合（Phase Mixing）</strong>による<strong>見かけの散逸</strong>です。</p>
+                    </div>
+
+                    <div class="key-point">
+                        <h4>ヴィラーニの証明</h4>
+                        <p>ランダウ自身は現象を線形化された方程式で説明しましたが、ヴィラーニ氏とムホ氏（Clément Mouhot）は、元の<strong>非線形</strong>なVlasov-Poisson方程式において、初期分布が平衡状態に近い場合、解が平衡状態（マクスウェル分布）に指数関数的に収束することを証明しました。</p>
+                        <p>この証明には、彼らが開発した<strong>準統御性</strong>の手法や、高次の摂動解析が用いられ、プラズマ物理学における半世紀にわたる未解決問題を解決しました。</p>
+                    </div>
+
+                    <div class="quiz-box">
+                        <h4>理解度チェック</h4>
+                        <p class="quiz-question">ランダウ減衰において、波のエネルギーが失われる主な理由は何ですか？</p>
+                        <div class="quiz-options">
+                            <button class="quiz-option" data-correct="false">粒子間の衝突による散逸</button>
+                            <button class="quiz-option" data-correct="true">位相空間における粒子の混合（Phase Mixing）</button>
+                            <button class="quiz-option" data-correct="false">外部からの熱の放出</button>
+                        </div>
+                        <p class="quiz-feedback" style="display: none;"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="summary-section">
+                <h3>まとめ</h3>
+                <p>これらの業績は、非平衡統計物理学の基礎方程式を厳密に解析するための強力な数学的ツールキットを開発し、数学と物理学の境界領域に多大な影響を与えました。</p>
+            </div>
+        </section>
+
+        <!-- 機械学習的視点 -->
+        <section id="ml-tab" class="tab-content">
+            <div class="intro-section">
+                <h2>機械学習的視点：最適輸送理論と現代の応用</h2>
+                <p>ヴィラーニ氏の最適輸送理論は、現代の機械学習、特に生成モデルやデータ解析において重要な役割を果たしています。</p>
+            </div>
+
+            <div class="topic-section">
+                <div class="topic-header" data-topic="wasserstein-ml">
+                    <h3>1. ワッサースタイン距離と機械学習</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="topic-content" id="wasserstein-ml-content">
+                    <p>ヴィラーニ氏の研究で中心的な役割を果たす<strong>ワッサースタイン距離</strong>は、機械学習において確率分布間の距離を測る強力なツールとして使われています。</p>
+
+                    <div class="key-point">
+                        <h4>ワッサースタイン距離の特徴</h4>
+                        <ul>
+                            <li><strong>幾何学的意味</strong>: 一つの分布を別の分布に変換するために必要な「最小の仕事量」を表す</li>
+                            <li><strong>滑らかな距離</strong>: KLダイバージェンスなどと異なり、サポートが重ならない分布間でも有意義な距離を与える</li>
+                            <li><strong>勾配が安定</strong>: 最適化において勾配が消失しにくい</li>
+                        </ul>
+                    </div>
+
+                    <div class="ml-application">
+                        <h4>機械学習での応用例</h4>
+                        <div class="application-grid">
+                            <div class="app-card">
+                                <h5>GANs（敵対的生成ネットワーク）</h5>
+                                <p>Wasserstein GAN (WGAN) では、生成分布と真の分布の距離をワッサースタイン距離で測定し、安定した学習を実現</p>
+                            </div>
+                            <div class="app-card">
+                                <h5>ドメイン適応</h5>
+                                <p>異なるドメイン間のデータ分布を最適輸送で整合させ、転移学習の性能を向上</p>
+                            </div>
+                            <div class="app-card">
+                                <h5>画像処理</h5>
+                                <p>カラー変換、テクスチャ転送、画像モーフィングなどに応用</p>
+                            </div>
+                            <div class="app-card">
+                                <h5>自然言語処理</h5>
+                                <p>単語埋め込み空間での文書間距離の計算（Word Mover's Distance）</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="topic-section">
+                <div class="topic-header" data-topic="entropy-regularization">
+                    <h3>2. エントロピー正則化と Sinkhorn アルゴリズム</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="topic-content" id="entropy-regularization-content">
+                    <p>最適輸送問題を実際に解くためには、計算コストが課題となります。エントロピー正則化を用いることで、高速な近似解法が可能になります。</p>
+
+                    <div class="equation-box">
+                        <p><strong>エントロピー正則化された最適輸送:</strong></p>
+                        <p>$$\min_{\pi \in \Pi(\mu, \nu)} \langle C, \pi \rangle - \epsilon H(\pi)$$</p>
+                        <p>ここで、$H(\pi)$ はエントロピー項、$\epsilon$ は正則化パラメータ</p>
+                    </div>
+
+                    <div class="key-point">
+                        <h4>Sinkhorn アルゴリズム</h4>
+                        <p>エントロピー正則化された最適輸送問題は、<strong>Sinkhornアルゴリズム</strong>という高速な反復アルゴリズムで解くことができます。これにより、大規模データに対しても実用的な計算時間で最適輸送が適用可能になりました。</p>
+                    </div>
+
+                    <div class="code-example">
+                        <h4>Pythonコード例</h4>
+                        <pre><code class="language-python"># Python Optimal Transport (POT) ライブラリを使用
+import ot
+import numpy as np
+
+# 2つの分布のサンプル
+n = 100  # サンプル数
+a = np.random.randn(n, 2)  # 分布1
+b = np.random.randn(n, 2) + 2  # 分布2
+
+# 一様な重み
+weights_a = np.ones(n) / n
+weights_b = np.ones(n) / n
+
+# コスト行列（ユークリッド距離の二乗）
+M = ot.dist(a, b, metric='sqeuclidean')
+
+# Sinkhorn アルゴリズムで最適輸送計画を計算
+lambda_reg = 0.01  # 正則化パラメータ
+transport_plan = ot.sinkhorn(weights_a, weights_b, M, lambda_reg)
+
+# ワッサースタイン距離を計算
+wasserstein_dist = np.sum(transport_plan * M)
+print(f"ワッサースタイン距離: {wasserstein_dist:.4f}")
+</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="topic-section">
+                <div class="topic-header" data-topic="gradient-flows">
+                    <h3>3. 勾配流とニューラルネットワークの最適化</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="topic-content" id="gradient-flows-content">
+                    <p>ヴィラーニ氏の研究における<strong>ワッサースタイン空間上の勾配流</strong>の概念は、ニューラルネットワークの学習ダイナミクスを理解する新しい視点を提供します。</p>
+
+                    <div class="key-point">
+                        <h4>パラメータ空間 vs 分布空間</h4>
+                        <p>従来のニューラルネットワークの解析では、パラメータ空間での最適化を考えますが、ワッサースタイン勾配流の視点では、ネットワークが表現する<strong>分布の空間</strong>での最適化として捉えることができます。</p>
+                    </div>
+
+                    <div class="ml-insight">
+                        <h4>機械学習への示唆</h4>
+                        <ul>
+                            <li><strong>過剰パラメータ化の理解</strong>: 無限幅のニューラルネットワークの極限では、学習はワッサースタイン空間上の勾配流として記述できる</li>
+                            <li><strong>汎化性能</strong>: エントロピーや最適輸送コストを用いた汎化誤差の評価</li>
+                            <li><strong>学習アルゴリズム設計</strong>: ワッサースタイン勾配流に基づく新しい学習アルゴリズムの開発</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="topic-section">
+                <div class="topic-header" data-topic="ot-applications">
+                    <h3>4. 最適輸送の実践的応用</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="topic-content" id="ot-applications-content">
+                    <div class="application-showcase">
+                        <h4>具体的な応用事例</h4>
+
+                        <div class="showcase-item">
+                            <h5>1. 画像生成（Wasserstein GAN）</h5>
+                            <p>従来のGANの学習の不安定性を、ワッサースタイン距離を用いることで改善。モード崩壊（mode collapse）の問題を軽減し、より多様で高品質な画像を生成できます。</p>
+                        </div>
+
+                        <div class="showcase-item">
+                            <h5>2. データ拡張とドメイン適応</h5>
+                            <p>あるドメイン（例：シミュレーションデータ）から別のドメイン（例：実世界データ）への知識転移において、最適輸送を用いて分布を整合させることで、転移学習の性能を向上させます。</p>
+                        </div>
+
+                        <div class="showcase-item">
+                            <h5>3. 単細胞RNA-seqデータ解析</h5>
+                            <p>生物学において、異なる時点での細胞集団の発展を最適輸送で追跡し、細胞の運命決定過程を理解します。</p>
+                        </div>
+
+                        <div class="showcase-item">
+                            <h5>4. 推薦システム</h5>
+                            <p>ユーザーの嗜好分布と商品の特徴分布をマッチングする際に、最適輸送を用いて効率的な推薦を実現します。</p>
+                        </div>
+                    </div>
+
+                    <div class="quiz-box">
+                        <h4>理解度チェック</h4>
+                        <p class="quiz-question">Wasserstein GANが従来のGANと比べて優れている点は何ですか？</p>
+                        <div class="quiz-options">
+                            <button class="quiz-option" data-correct="false">学習速度が圧倒的に速い</button>
+                            <button class="quiz-option" data-correct="true">学習が安定し、勾配消失問題が軽減される</button>
+                            <button class="quiz-option" data-correct="false">必要なデータ量が少ない</button>
+                        </div>
+                        <p class="quiz-feedback" style="display: none;"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="topic-section">
+                <div class="topic-header" data-topic="future-ml">
+                    <h3>5. 最適輸送理論の今後の展望</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="topic-content" id="future-ml-content">
+                    <div class="future-directions">
+                        <h4>研究の方向性</h4>
+
+                        <div class="direction-card">
+                            <h5>条件付き最適輸送</h5>
+                            <p>条件付き生成モデルへの応用や、因果推論への拡張</p>
+                        </div>
+
+                        <div class="direction-card">
+                            <h5>計算効率の向上</h5>
+                            <p>より大規模なデータに対する高速アルゴリズムの開発</p>
+                        </div>
+
+                        <div class="direction-card">
+                            <h5>理論的保証</h5>
+                            <p>最適輸送を用いた学習アルゴリズムの収束性や汎化性能の理論的解析</p>
+                        </div>
+
+                        <div class="direction-card">
+                            <h5>新しい応用領域</h5>
+                            <p>強化学習、グラフニューラルネットワーク、量子機械学習などへの展開</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="summary-section">
+                <h3>まとめ</h3>
+                <p>ヴィラーニ氏の最適輸送理論は、純粋数学・物理学の枠を超えて、現代の機械学習において実用的かつ理論的に重要なツールとなっています。確率分布を扱う多くの問題において、ワッサースタイン距離と最適輸送は今後さらに重要性を増していくでしょう。</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Cédric Villani フィールズ賞業績学習アプリ | 教育目的のみ</p>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="js/app.js"></script>
+</body>
+</html>
