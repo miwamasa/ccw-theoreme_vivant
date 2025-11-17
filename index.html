@@ -380,161 +380,111 @@
         <!-- 機械学習的視点 -->
         <section id="ml-tab" class="tab-content">
             <div class="intro-section">
-                <h2>機械学習的視点：最適輸送理論と現代の応用</h2>
-                <p>ヴィラーニ氏の最適輸送理論は、現代の機械学習、特に生成モデルやデータ解析において重要な役割を果たしています。</p>
+                <h2>機械学習との関係性：物理学と情報科学の融合</h2>
+                <p>ヴィラーニ氏の業績は、一見古典的な統計物理学の問題に見えますが、その根底にある数学的・物理学的な概念は、現代の機械学習、特に<strong>確率的モデリング</strong>と<strong>最適化</strong>において極めて重要な役割を果たしています。</p>
             </div>
 
             <div class="topic-section">
-                <div class="topic-header" data-topic="wasserstein-ml">
-                    <h3>1. ワッサースタイン距離と機械学習</h3>
+                <div class="topic-header" data-topic="boltzmann-machines">
+                    <h3>1. ボルツマン分布とボルツマンマシン (Boltzmann Machines)</h3>
                     <span class="expand-icon">▼</span>
                 </div>
-                <div class="topic-content" id="wasserstein-ml-content">
-                    <p>ヴィラーニ氏の研究で中心的な役割を果たす<strong>ワッサースタイン距離</strong>は、機械学習において確率分布間の距離を測る強力なツールとして使われています。</p>
+                <div class="topic-content" id="boltzmann-machines-content">
+                    <p>最も直接的な関係は、ボルツマン方程式の平衡解である<strong>ボルツマン分布（マクスウェル分布）</strong>をモデル化したニューラルネットワークです。</p>
 
                     <div class="key-point">
-                        <h4>ワッサースタイン距離の特徴</h4>
-                        <ul>
-                            <li><strong>幾何学的意味</strong>: 一つの分布を別の分布に変換するために必要な「最小の仕事量」を表す</li>
-                            <li><strong>滑らかな距離</strong>: KLダイバージェンスなどと異なり、サポートが重ならない分布間でも有意義な距離を与える</li>
-                            <li><strong>勾配が安定</strong>: 最適化において勾配が消失しにくい</li>
-                        </ul>
+                        <h4>ボルツマンマシン (BM)</h4>
+                        <p>ディープラーニングの初期に登場した確率的な生成モデル（Generative Model）であり、ニューロン間の接続を重みとバイアスで定義し、その結合エネルギーが系の確率分布を与えるという点で、<strong>統計力学</strong>の考え方を借用しています。</p>
+                    </div>
+
+                    <div class="equation-box">
+                        <p><strong>ボルツマン分布:</strong></p>
+                        <p>ニューロンが取る状態の確率分布 $P(\mathbf{x})$ は、エネルギー関数 $\Phi(\mathbf{x})$ を用いて、ボルツマン分布と同じ形式で表現されます。</p>
+                        <p>$$P(\mathbf{x}) = \frac{e^{-\Phi(\mathbf{x})}}{Z}$$</p>
+                        <p>ここで $Z$ は分配関数です。学習は、このモデルの確率分布をデータ分布に近づけるように、パラメータ（重み）を最適化することで行われます。</p>
+                    </div>
+
+                    <div class="key-point">
+                        <h4>物理学との接続</h4>
+                        <p>ボルツマンマシンの学習プロセスは、物理学における<strong>熱平衡状態</strong>を探すプロセスに酷似しています。<strong>マルコフ連鎖モンテカルロ法</strong>などが利用され、計算が複雑で時間がかかるという課題はありますが、その理論的背景は、ヴィラーニ氏が解析したような非平衡から平衡への遷移（緩和）をモデル化していると言えます。</p>
                     </div>
 
                     <div class="ml-application">
-                        <h4>機械学習での応用例</h4>
+                        <h4>ボルツマンマシンの特徴</h4>
                         <div class="application-grid">
                             <div class="app-card">
-                                <h5>GANs（敵対的生成ネットワーク）</h5>
-                                <p>Wasserstein GAN (WGAN) では、生成分布と真の分布の距離をワッサースタイン距離で測定し、安定した学習を実現</p>
+                                <h5>確率的生成モデル</h5>
+                                <p>データの背後にある確率分布を学習し、新しいサンプルを生成</p>
+                            </div>
+                            <div class="app-card">
+                                <h5>統計力学的解釈</h5>
+                                <p>エネルギー関数と温度パラメータによる確率的な状態遷移</p>
+                            </div>
+                            <div class="app-card">
+                                <h5>制限ボルツマンマシン</h5>
+                                <p>層間の結合のみを許可することで学習を効率化したRBM</p>
+                            </div>
+                            <div class="app-card">
+                                <h5>深層学習への応用</h5>
+                                <p>Deep Belief Networksなど、深層学習の基礎を築く</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="topic-section">
+                <div class="topic-header" data-topic="optimal-transport-ml">
+                    <h3>2. 最適輸送理論と距離の概念 (Optimal Transport in ML)</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="topic-content" id="optimal-transport-ml-content">
+                    <p>ヴィラーニ氏がボルツマン方程式の解析に活用した<strong>最適輸送理論（OT）</strong>は、機械学習においてデータ分布間の比較・解析を行う上で、標準的なツールになりつつあります。</p>
+
+                    <div class="key-point">
+                        <h4>ワッサースタイン距離 ($W_2$) の活用</h4>
+                        <p>従来の機械学習では、二つの確率分布 $P$ と $Q$ の違いを測るために<strong>カルバック・ライブラー情報量（KLダイバージェンス）</strong>などが使われてきました。しかし、KLダイバージェンスは非対称であったり、分布が重ならない場合に無限大になるなど、欠点がありました。</p>
+                    </div>
+
+                    <div class="equation-box">
+                        <p><strong>$W_2$ の利点:</strong></p>
+                        <p>ワッサースタイン距離は、分布をある場所から別の場所に移動させる「コスト」として定義されるため、分布の<strong>幾何学的構造</strong>や<strong>位相</strong>を考慮に入れた、より意味のある距離を提供します。</p>
+                    </div>
+
+                    <div class="key-point">
+                        <h4>GANs (Generative Adversarial Networks) への応用</h4>
+                        <p>特に生成モデルの分野で、GANsの目的関数として$W_2$距離を用いる<strong>Wasserstein GAN (WGAN)</strong>が開発されました。これにより、学習が安定し、より高品質な画像を生成できるようになりました。ヴィラーニ氏が確立したOTの数学的厳密さが、データ科学の応用を支えていると言えます。</p>
+                    </div>
+
+                    <div class="ml-application">
+                        <h4>最適輸送の機械学習応用</h4>
+                        <div class="application-grid">
+                            <div class="app-card">
+                                <h5>Wasserstein GAN</h5>
+                                <p>学習の安定性を大幅に改善し、モード崩壊を防ぐ</p>
                             </div>
                             <div class="app-card">
                                 <h5>ドメイン適応</h5>
-                                <p>異なるドメイン間のデータ分布を最適輸送で整合させ、転移学習の性能を向上</p>
+                                <p>異なるドメイン間のデータ分布を最適輸送で整合</p>
                             </div>
                             <div class="app-card">
-                                <h5>画像処理</h5>
-                                <p>カラー変換、テクスチャ転送、画像モーフィングなどに応用</p>
+                                <h5>データの公平性</h5>
+                                <p>データ分布間の偏りを定量化し、公平性を評価・改善</p>
                             </div>
                             <div class="app-card">
-                                <h5>自然言語処理</h5>
-                                <p>単語埋め込み空間での文書間距離の計算（Word Mover's Distance）</p>
+                                <h5>画像・テキスト処理</h5>
+                                <p>カラー変換、スタイル転送、Word Mover's Distanceなど</p>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="topic-section">
-                <div class="topic-header" data-topic="entropy-regularization">
-                    <h3>2. エントロピー正則化と Sinkhorn アルゴリズム</h3>
-                    <span class="expand-icon">▼</span>
-                </div>
-                <div class="topic-content" id="entropy-regularization-content">
-                    <p>最適輸送問題を実際に解くためには、計算コストが課題となります。エントロピー正則化を用いることで、高速な近似解法が可能になります。</p>
-
-                    <div class="equation-box">
-                        <p><strong>エントロピー正則化された最適輸送:</strong></p>
-                        <p>$$\min_{\pi \in \Pi(\mu, \nu)} \langle C, \pi \rangle - \epsilon H(\pi)$$</p>
-                        <p>ここで、$H(\pi)$ はエントロピー項、$\epsilon$ は正則化パラメータ</p>
-                    </div>
-
-                    <div class="key-point">
-                        <h4>Sinkhorn アルゴリズム</h4>
-                        <p>エントロピー正則化された最適輸送問題は、<strong>Sinkhornアルゴリズム</strong>という高速な反復アルゴリズムで解くことができます。これにより、大規模データに対しても実用的な計算時間で最適輸送が適用可能になりました。</p>
-                    </div>
-
-                    <div class="code-example">
-                        <h4>Pythonコード例</h4>
-                        <pre><code class="language-python"># Python Optimal Transport (POT) ライブラリを使用
-import ot
-import numpy as np
-
-# 2つの分布のサンプル
-n = 100  # サンプル数
-a = np.random.randn(n, 2)  # 分布1
-b = np.random.randn(n, 2) + 2  # 分布2
-
-# 一様な重み
-weights_a = np.ones(n) / n
-weights_b = np.ones(n) / n
-
-# コスト行列（ユークリッド距離の二乗）
-M = ot.dist(a, b, metric='sqeuclidean')
-
-# Sinkhorn アルゴリズムで最適輸送計画を計算
-lambda_reg = 0.01  # 正則化パラメータ
-transport_plan = ot.sinkhorn(weights_a, weights_b, M, lambda_reg)
-
-# ワッサースタイン距離を計算
-wasserstein_dist = np.sum(transport_plan * M)
-print(f"ワッサースタイン距離: {wasserstein_dist:.4f}")
-</code></pre>
-                    </div>
-                </div>
-            </div>
-
-            <div class="topic-section">
-                <div class="topic-header" data-topic="gradient-flows">
-                    <h3>3. 勾配流とニューラルネットワークの最適化</h3>
-                    <span class="expand-icon">▼</span>
-                </div>
-                <div class="topic-content" id="gradient-flows-content">
-                    <p>ヴィラーニ氏の研究における<strong>ワッサースタイン空間上の勾配流</strong>の概念は、ニューラルネットワークの学習ダイナミクスを理解する新しい視点を提供します。</p>
-
-                    <div class="key-point">
-                        <h4>パラメータ空間 vs 分布空間</h4>
-                        <p>従来のニューラルネットワークの解析では、パラメータ空間での最適化を考えますが、ワッサースタイン勾配流の視点では、ネットワークが表現する<strong>分布の空間</strong>での最適化として捉えることができます。</p>
-                    </div>
-
-                    <div class="ml-insight">
-                        <h4>機械学習への示唆</h4>
-                        <ul>
-                            <li><strong>過剰パラメータ化の理解</strong>: 無限幅のニューラルネットワークの極限では、学習はワッサースタイン空間上の勾配流として記述できる</li>
-                            <li><strong>汎化性能</strong>: エントロピーや最適輸送コストを用いた汎化誤差の評価</li>
-                            <li><strong>学習アルゴリズム設計</strong>: ワッサースタイン勾配流に基づく新しい学習アルゴリズムの開発</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="topic-section">
-                <div class="topic-header" data-topic="ot-applications">
-                    <h3>4. 最適輸送の実践的応用</h3>
-                    <span class="expand-icon">▼</span>
-                </div>
-                <div class="topic-content" id="ot-applications-content">
-                    <div class="application-showcase">
-                        <h4>具体的な応用事例</h4>
-
-                        <div class="showcase-item">
-                            <h5>1. 画像生成（Wasserstein GAN）</h5>
-                            <p>従来のGANの学習の不安定性を、ワッサースタイン距離を用いることで改善。モード崩壊（mode collapse）の問題を軽減し、より多様で高品質な画像を生成できます。</p>
-                        </div>
-
-                        <div class="showcase-item">
-                            <h5>2. データ拡張とドメイン適応</h5>
-                            <p>あるドメイン（例：シミュレーションデータ）から別のドメイン（例：実世界データ）への知識転移において、最適輸送を用いて分布を整合させることで、転移学習の性能を向上させます。</p>
-                        </div>
-
-                        <div class="showcase-item">
-                            <h5>3. 単細胞RNA-seqデータ解析</h5>
-                            <p>生物学において、異なる時点での細胞集団の発展を最適輸送で追跡し、細胞の運命決定過程を理解します。</p>
-                        </div>
-
-                        <div class="showcase-item">
-                            <h5>4. 推薦システム</h5>
-                            <p>ユーザーの嗜好分布と商品の特徴分布をマッチングする際に、最適輸送を用いて効率的な推薦を実現します。</p>
                         </div>
                     </div>
 
                     <div class="quiz-box">
                         <h4>理解度チェック</h4>
-                        <p class="quiz-question">Wasserstein GANが従来のGANと比べて優れている点は何ですか？</p>
+                        <p class="quiz-question">ワッサースタイン距離がKLダイバージェンスより優れている点は何ですか？</p>
                         <div class="quiz-options">
-                            <button class="quiz-option" data-correct="false">学習速度が圧倒的に速い</button>
-                            <button class="quiz-option" data-correct="true">学習が安定し、勾配消失問題が軽減される</button>
-                            <button class="quiz-option" data-correct="false">必要なデータ量が少ない</button>
+                            <button class="quiz-option" data-correct="false">計算が圧倒的に速い</button>
+                            <button class="quiz-option" data-correct="true">分布が重ならない場合でも有意義な距離を与える</button>
+                            <button class="quiz-option" data-correct="false">常に対称的である</button>
                         </div>
                         <p class="quiz-feedback" style="display: none;"></p>
                     </div>
@@ -542,32 +492,68 @@ print(f"ワッサースタイン距離: {wasserstein_dist:.4f}")
             </div>
 
             <div class="topic-section">
-                <div class="topic-header" data-topic="future-ml">
-                    <h3>5. 最適輸送理論の今後の展望</h3>
+                <div class="topic-header" data-topic="relaxation-learning">
+                    <h3>3. 緩和現象と学習のダイナミクス</h3>
                     <span class="expand-icon">▼</span>
                 </div>
-                <div class="topic-content" id="future-ml-content">
-                    <div class="future-directions">
-                        <h4>研究の方向性</h4>
+                <div class="topic-content" id="relaxation-learning-content">
+                    <p>ヴィラーニ氏が開発した<strong>準統御性 (Hypocoercivity)</strong>の概念は、非平衡状態が平衡状態へどれだけ早く、安定して収束するかを記述するものです。</p>
 
-                        <div class="direction-card">
-                            <h5>条件付き最適輸送</h5>
-                            <p>条件付き生成モデルへの応用や、因果推論への拡張</p>
-                        </div>
+                    <div class="key-point">
+                        <h4>勾配降下法（Gradient Descent）との接続</h4>
+                        <p>機械学習の学習プロセスは、コスト関数（または損失関数）というエネルギー地形の上を、パラメータが最小値に向かって<strong>勾配流</strong>として動く過程と見なせます。このダイナミクスは、<strong>ランジュバン方程式</strong>や<strong>フォッカー・プランク方程式</strong>といったヴィラーニ氏の研究対象と類似した拡散過程で記述されることがあります。</p>
+                    </div>
 
-                        <div class="direction-card">
-                            <h5>計算効率の向上</h5>
-                            <p>より大規模なデータに対する高速アルゴリズムの開発</p>
-                        </div>
+                    <div class="equation-box">
+                        <p><strong>学習のダイナミクスと物理学:</strong></p>
+                        <p>勾配降下法は、エネルギー景観を下る粒子の運動として解釈できます。</p>
+                        <p>$$\frac{d\theta}{dt} = -\nabla L(\theta)$$</p>
+                        <p>ここで、$\theta$ はモデルのパラメータ、$L(\theta)$ は損失関数です。</p>
+                    </div>
 
-                        <div class="direction-card">
-                            <h5>理論的保証</h5>
-                            <p>最適輸送を用いた学習アルゴリズムの収束性や汎化性能の理論的解析</p>
-                        </div>
+                    <div class="key-point">
+                        <h4>収束速度の解析</h4>
+                        <p>準統御性の数学的手法は、これらの学習ダイナミクスが、<strong>鞍点</strong>や<strong>局所最小値</strong>にトラップされることなく、大域的な平衡点（最適解）に効率的に収束するための条件や速度を解析するために応用されています。</p>
+                    </div>
 
-                        <div class="direction-card">
-                            <h5>新しい応用領域</h5>
-                            <p>強化学習、グラフニューラルネットワーク、量子機械学習などへの展開</p>
+                    <div class="ml-insight">
+                        <h4>機械学習への示唆</h4>
+                        <ul>
+                            <li><strong>最適化アルゴリズムの設計</strong>: 準統御性の原理を用いて、より効率的な最適化手法を開発</li>
+                            <li><strong>収束保証</strong>: 学習が確実に収束するための理論的条件の導出</li>
+                            <li><strong>非凸最適化</strong>: 深層学習の非凸な損失関数においても、収束性を保証する手法の開発</li>
+                            <li><strong>確率的勾配降下法</strong>: ノイズを伴う勾配降下法の収束速度の解析</li>
+                        </ul>
+                    </div>
+
+                    <div class="interactive-diagram">
+                        <h4>エネルギー景観と最適化</h4>
+                        <div class="diagram-placeholder">
+                            <svg width="100%" height="200" viewBox="0 0 600 200">
+                                <!-- エネルギー景観 -->
+                                <path d="M 50 150 Q 150 50 200 100 Q 250 150 300 80 Q 400 10 500 120"
+                                      stroke="#3498db" stroke-width="3" fill="none"/>
+
+                                <!-- 勾配降下の経路 -->
+                                <circle cx="180" cy="90" r="8" fill="#e74c3c" opacity="0.8"/>
+                                <path d="M 180 90 L 220 110 L 260 120 L 300 80"
+                                      stroke="#e74c3c" stroke-width="2" fill="none"
+                                      stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
+
+                                <!-- 矢印のマーカー -->
+                                <defs>
+                                    <marker id="arrowhead" markerWidth="10" markerHeight="10"
+                                            refX="5" refY="3" orient="auto">
+                                        <polygon points="0 0, 10 3, 0 6" fill="#e74c3c"/>
+                                    </marker>
+                                </defs>
+
+                                <!-- ラベル -->
+                                <text x="50" y="180" font-size="14" fill="#333">パラメータ空間</text>
+                                <text x="20" y="100" font-size="14" fill="#333">損失</text>
+                                <text x="320" y="70" font-size="12" fill="#e74c3c">最適解</text>
+                            </svg>
+                            <p class="diagram-caption">勾配降下法によるエネルギー最小化の過程</p>
                         </div>
                     </div>
                 </div>
@@ -575,7 +561,8 @@ print(f"ワッサースタイン距離: {wasserstein_dist:.4f}")
 
             <div class="summary-section">
                 <h3>まとめ</h3>
-                <p>ヴィラーニ氏の最適輸送理論は、純粋数学・物理学の枠を超えて、現代の機械学習において実用的かつ理論的に重要なツールとなっています。確率分布を扱う多くの問題において、ワッサースタイン距離と最適輸送は今後さらに重要性を増していくでしょう。</p>
+                <p>ヴィラーニ氏の業績は、統計物理学の根源的な問題を解く過程で、<strong>幾何学的距離</strong>と<strong>散逸現象</strong>に関する普遍的な数学的枠組みを提供しました。これが、データサイエンスにおける複雑な高次元確率分布の取り扱い、特に生成モデルや最適化アルゴリズムの理論的保証を与える基盤となっています。</p>
+                <p>ボルツマンマシンから最適輸送理論、そして勾配降下法の収束性解析まで、物理学と機械学習の間には深い数学的な繋がりが存在します。ヴィラーニ氏の研究は、両分野を橋渡しする重要な役割を果たしています。</p>
             </div>
         </section>
     </main>
